@@ -10,4 +10,5 @@ Perhaps it will come but this is not that time.
 
 I'm going to continue to work on this, to make the thing I can see in my head, which this thing is not.
 
-It's mediocre and the only good parts are things I found on the web others created.
+PS: the link to my portfolio page is https://seanhellier.github.io/new-portfolio/portfolio.html
+
