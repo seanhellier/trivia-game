@@ -104,23 +104,19 @@ body{
     margin-top : -10px;
     margin-left : 25px;
 }
-#progress{
-    width : 500px;
-    position: absolute;
-    bottom : 0px;
-    right : 0px;
-    padding:5px;
-    text-align: right;
-}
-.prog{
-    width : 25px;
-    height : 25px;
-    border: 1px solid #000;
-    display: inline-block;
-    border-radius: 50%;
-    margin-left : 5px;
-    margin-right : 5px;
-}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:rgb(143, 155, 148);
+    color: white;
+    text-align: center;
+   padding-top: 30px;
+    font-family: monospace;
+ }
+
 #scoreContainer{
     margin : 20px auto;
     background-color: white;
