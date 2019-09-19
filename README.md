@@ -12,3 +12,7 @@ I'm going to continue to work on this, to make the thing I can see in my head, w
 
 PS: the link to my portfolio page is https://seanhellier.github.io/new-portfolio/portfolio.html
 
+the link to this project is https://seanhellier.github.io/triviaGame/
+
+the link to the github repository for this project is https://github.com/seanhellier/triviaGame
+
