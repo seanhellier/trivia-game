@@ -8,46 +8,47 @@
 // if they guess wrong, present correct answer and an image connected to the answer
 // at the end of the Game, show correct and incorrect answer scores and give the user the opportunity to play again
 
-// when question array is exhausted or user loses, 
-
+// when question array is exhausted or user loses,
 
 // select all elements
-const start = document.getElementById("start");
-const quiz = document.getElementById("quiz");
-const question = document.getElementById("question");
-const qImg = document.getElementById("qImg");
-const choiceA = document.getElementById("A");
-const choiceB = document.getElementById("B");
-const choiceC = document.getElementById("C");
-const counter = document.getElementById("counter");
-const timeGauge = document.getElementById("timeGauge");
-const progress = document.getElementById("progress");
-const scoreDiv = document.getElementById("scoreContainer");
+const start = document.getElementById('start');
+const quiz = document.getElementById('quiz');
+const question = document.getElementById('question');
+const qImg = document.getElementById('qImg');
+const choiceA = document.getElementById('A');
+const choiceB = document.getElementById('B');
+const choiceC = document.getElementById('C');
+const counter = document.getElementById('counter');
+const timeGauge = document.getElementById('timeGauge');
+const progress = document.getElementById('progress');
+const scoreDiv = document.getElementById('scoreContainer');
 
 // create our questions
 let questions = [
-    {
-        question : "Who designed the Chrysler Building",
-        imgSrc : "./assets/images/chryslerbldg.jpg",
-        choiceA : "William Van Alen",
-        choiceB : "Frank Loyyd Wright",
-        choiceC : "le Corbusier",
-        correct : "A"
-    },{
-        question : "When was the Bufj Khalifa built?",
-        imgSrc : "./assets/images/burjKhalifa.jpg",
-        choiceA : "1966-1970",
-        choiceB : "2004-2010",
-        choiceC : "1980",
-        correct : "B"
-    },{
-        question : "How tall is the Shard?",
-        imgSrc : "./assets/images/theShard.jpg",
-        choiceA : "206.8 metersng",
-        choiceB : "1,100.5 meters",
-        choiceC : "309.7 meters",
-        correct : "C"
-    }
+	{
+		question: 'Who designed the Chrysler Building?',
+		imgSrc: './assets/images/chryslerbldg.jpg',
+		choiceA: 'William Van Alen',
+		choiceB: 'Frank Loyyd Wright',
+		choiceC: 'le Corbusier',
+		correct: 'A'
+	},
+	{
+		question: 'When was the Bufj Khalifa built?',
+		imgSrc: './assets/images/burjKhalifa.jpg',
+		choiceA: '1966-1970',
+		choiceB: '2004-2010',
+		choiceC: '1980',
+		correct: 'B'
+	},
+	{
+		question: 'How tall is the Shard?',
+		imgSrc: './assets/images/theShard.jpg',
+		choiceA: '206.8 metersng',
+		choiceB: '1,100.5 meters',
+		choiceC: '309.7 meters',
+		correct: 'C'
+	}
 ];
 
 // create some variables
@@ -62,97 +63,97 @@ let TIMER;
 let score = 0;
 
 // render a question
-function renderQuestion(){
-    let q = questions[runningQuestion];
-    
-    question.innerHTML = "<p>"+ q.question +"</p>";
-    qImg.innerHTML = "<img src="+ q.imgSrc +">";
-    
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
+function renderQuestion() {
+	let q = questions[runningQuestion];
+
+	question.innerHTML = '<p>' + q.question + '</p>';
+	qImg.innerHTML = '<img src=' + q.imgSrc + '>';
+
+	choiceA.innerHTML = q.choiceA;
+	choiceB.innerHTML = q.choiceB;
+	choiceC.innerHTML = q.choiceC;
 }
 
-start.addEventListener("click",startQuiz);
+start.addEventListener('click', startQuiz);
 
 // start quiz
-function startQuiz(){
-    start.style.display = "none";
-    renderQuestion();
-    quiz.style.display = "block";
-    renderProgress();
-    renderCounter();
-    TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
+function startQuiz() {
+	start.style.display = 'none';
+	renderQuestion();
+	quiz.style.display = 'block';
+	renderProgress();
+	renderCounter();
+	TIMER = setInterval(renderCounter, 1000); // 1000ms = 1s
 }
 
 // render progress
-function renderProgress(){
-    for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
-        progress.innerHTML += "<div class='prog' id="+ qIndex+"></div>";
-    }
+function renderProgress() {
+	for (let qIndex = 0; qIndex <= lastQuestion; qIndex++) {
+		progress.innerHTML += "<div class='prog' id=" + qIndex + '></div>';
+	}
 }
 
 // counter render
 
-function renderCounter(){
-    if(count <= questionTime){
-        counter.innerHTML = count;
-        timeGauge.style.width = count * gaugeUnit + "px";
-        count++
-    }else{
-        count = 0;
-        answerIsWrong();
-        if(runningQuestion < lastQuestion){
-            runningQuestion++;
-            renderQuestion();
-        }else{
-            // end the quiz and show the score
-            clearInterval(TIMER);
-            scoreRender();
-        }
-    }
+function renderCounter() {
+	if (count <= questionTime) {
+		counter.innerHTML = count;
+		timeGauge.style.width = count * gaugeUnit + 'px';
+		count++;
+	} else {
+		count = 0;
+		answerIsWrong();
+		if (runningQuestion < lastQuestion) {
+			runningQuestion++;
+			renderQuestion();
+		} else {
+			// end the quiz and show the score
+			clearInterval(TIMER);
+			scoreRender();
+		}
+	}
 }
 
 // checkAnwer
 
-function checkAnswer(answer){
-    if( answer == questions[runningQuestion].correct){
-        // answer is correct
-        score++;
-        // change progress color to green
-        answerIsCorrect();
-    }else{
-        // answer is wrong
-        // change progress color to red
-        answerIsWrong();
-    }
-    count = 0;
-    if(runningQuestion < lastQuestion){
-        runningQuestion++;
-        renderQuestion();
-    }else{
-        // end the quiz and show the score
-        clearInterval(TIMER);
-        scoreRender();
-    }
+function checkAnswer(answer) {
+	if (answer == questions[runningQuestion].correct) {
+		// answer is correct
+		score++;
+		// change progress color to green
+		answerIsCorrect();
+	} else {
+		// answer is wrong
+		// change progress color to red
+		answerIsWrong();
+	}
+	count = 0;
+	if (runningQuestion < lastQuestion) {
+		runningQuestion++;
+		renderQuestion();
+	} else {
+		// end the quiz and show the score
+		clearInterval(TIMER);
+		scoreRender();
+	}
 }
 
 // answer is correct
-function answerIsCorrect(){
-    document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
+function answerIsCorrect() {
+	document.getElementById(runningQuestion).style.backgroundColor = '#0f0';
 }
 
 // answer is Wrong
-function answerIsWrong(){
-    document.getElementById(runningQuestion).style.backgroundColor = "#f00";
+function answerIsWrong() {
+	document.getElementById(runningQuestion).style.backgroundColor = '#f00';
 }
 
 // score render
-function scoreRender(){
-    scoreDiv.style.display = "block";
-    
-    // calculate the amount of question percent answered by the user
-    const scorePerCent = Math.round(100 * score/questions.length);
+function scoreRender() {
+	scoreDiv.style.display = 'block';
 
-    scoreDiv.innerHTML += "<p>"+ "You got " + scorePerCent + "%</p>";
+	// calculate the amount of question percent answered by the user
+	const scorePerCent = Math.round(100 * score / questions.length);
+
+	scoreDiv.innerHTML += '<p>' + 'You got ' + scorePerCent + '%</p>';
 }

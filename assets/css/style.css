@@ -1,11 +1,12 @@
 body{
     font-size: 20px;
     font-family: monospace;
+    background-color: rgb(235, 151, 72);
 }
 
 #container{
     margin : 20px auto;
-    background-color: white;
+    background-color: rgb(235, 151, 72);
     height: 300px;
     width : 700px;
     border-radius: 5px;
@@ -49,7 +50,7 @@ body{
     width:600px;
     height : 125px;
     position: fixed;
-    top: 210px;
+    top: 110px;
     left:400px;
 }
 #question p{
